@@ -20,5 +20,9 @@ function doGet(){
   //cara 1: melakukan hardcode kode html
   //return HtmlService.createHtmlOutput('<h1>Hello World!</h1>')
   //cara 2: menggunakan file html terpisah
-  return HtmlService.createHtmlOutputFromFile('halamanUtama');
+  return HtmlService.createHtmlOutputFromFile('halamanUtama').evaluate;
+}
+
+function include(filename){
+  return HtmlService.createHtmlOutputFromFile(filename).getContent();
 }
