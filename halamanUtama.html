@@ -12,5 +12,26 @@
         </div>
       </div>
     </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        loadData();
+      })
+      function loadData(){
+        google.script.run
+        .withSuccessHandler(function (mydata){
+          displayData(mydata)
+        })
+        .withFailureHandler(function (){
+          showError();
+        })
+        .getDataDariSheet();
+      }
+      function displayData(data){
+        console.log(data);
+      }
+      function showError(){
+        alert('Error');
+      }
+    </script>
   </body>
 </html>

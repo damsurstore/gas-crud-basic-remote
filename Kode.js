@@ -20,9 +20,21 @@ function doGet(){
   //cara 1: melakukan hardcode kode html
   //return HtmlService.createHtmlOutput('<h1>Hello World!</h1>')
   //cara 2: menggunakan file html terpisah
-  return HtmlService.createHtmlOutputFromFile('halamanUtama').evaluate();
+  return HtmlService.createTemplateFromFile('halamanUtama').evaluate();
 }
 
 function include(filename){
   return HtmlService.createHtmlOutputFromFile(filename).getContent();
 }
+
+function getDataDariSheet(){
+  let sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet(); 
+  // ambil sheet aktif
+  let data = sheet.getDataRange().getValues();
+  // kirim data ke frontend
+  // skip header
+  data.shift();
+  return data;
+
+}
+
